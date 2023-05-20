@@ -11,7 +11,7 @@ export default function App() {
 	
 	function imc(){
 		let nmResult;
-		let r = peso / (altura * altura);
+		let r = parseFloat(peso) / (parseFloat(altura) * parseFloat(altura));
 		setResultado(r);
 		if(r <= 16.9){
 			nmResult = ("Muito abaixo do peso");
@@ -22,11 +22,11 @@ export default function App() {
 		}else if(r <= 29.9){
 			nmResult = ("Sobrepeso");
 		}else if(r <= 34.9){
-			nmResult = ("Obesidade")
+			nmResult = ("Obesidade I")
 		}else if(r <= 40){
-			nmResult = ("Obesidade Severa")
+			nmResult = ("Obesidade II")
 		}else{
-			nmResult = ("Obesidade Morbida")
+			nmResult = ("Obesidade III (Morbida)")
 		}
 		setNmResultado(nmResult)
 	}
@@ -39,8 +39,9 @@ export default function App() {
 		  
 		  <View style={styles.blocoImagem}>
 		  		<Image
+					resizeMode={'cover'}
 				 	style={styles.imagem}
-				 	source={require('./assets/imc.png')}
+				 	source={require('./assets/IMC.png')}
 				/>
 		  </View>
 		  
@@ -71,7 +72,7 @@ export default function App() {
 			  </View>
 			  
 			<View style={styles.label1}>
-				<Text style={styles.label1}> Resultado: {resultado} </Text>
+				<Text style={styles.label1}> Resultado: {resultado.toFixed(2)} </Text>
 				<Text> {nmResultado}</Text>
 			</View>
 		  </View>
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
   },
 	
 	titulo: {
-		backgroundColor: '#ffa500',
+		backgroundColor: '#fed455',
 		height: '10%',
 		justifyContent: 'center'
 	},
@@ -95,11 +96,11 @@ const styles = StyleSheet.create({
 	textoTitulo: {
 		fontSize: 20,
 		textAlign: 'center',
-		color: '#fff'
+		color: '#000'
 	},
 				  
 	imagem: {
-		width: 120,
+		width: '100%',
 		height: 120
 	},
 	
@@ -115,10 +116,11 @@ const styles = StyleSheet.create({
 	},
 
 	input: {
-	 	backgroundColor: '#fff',
+	 	backgroundColor: '#fed455',
 		borderWidth: 1,
 		fontSize: 15,
 		borderRadius: 5
+		
 	},
 	
 	label: {
@@ -144,7 +146,7 @@ const styles = StyleSheet.create({
 		marginLeft: '05%',
 		marginRight: '05%',
 		alignItems: 'center',
-		backgroundColor: '#ffa500',
+		backgroundColor: '#a5c3d1',
 		borderWidth: 1
 	},
 	
